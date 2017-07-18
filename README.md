@@ -92,10 +92,10 @@ You should be aware that key can be found if you store it directly to your code.
 ## Roadmap & TODOs
 - [x] Better style for modal: border, padding, transparency
 - [x] Button to close the modal
-- [x] Test every line of code
 - [x] Better catch of error into login url
 - [x] Add gif example in README
 - [x] Publish example to expo
+- [ ] Test every line of code
 - [ ] Add props or other function to fetch more informations like basic profile information
 
 
