@@ -86,9 +86,10 @@ export default class AppContainer extends React.Component {
 
 ## Security
 
-Please not that you should pass your linkedin client id and you secret key to the component.
+Please note that you should give your linkedin client id and you secret key to the component.
 You should be aware that key can be found if you store it directly to your code.
 **I strongly recommand to not declare both on your code but found a way to keep it secret (ie. get it from server, encrypt it, ...)**
+
 ## Roadmap & TODOs
 - [x] Better style for modal: border, padding, transparency
 - [x] Button to close the modal
