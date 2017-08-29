@@ -11,6 +11,7 @@ import LinkedInModal, {
   getPayloadForToken,
   injectedJavaScript,
   fetchToken,
+  logError,
 } from '../'
 
 jest.mock('WebView', () => 'WebView')
@@ -132,4 +133,8 @@ it('fetchToken', async () => {
     access_token: 'access_token',
     expires_in: 'expires_in',
   })
+})
+
+it('logError', async () => {
+  logError({ type: 'test_error', message: 'test error' })
 })

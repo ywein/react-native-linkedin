@@ -129,6 +129,36 @@ export const fetchToken: string => Promise<LinkedInToken> = async payload => {
   return await response.json()
 }
 
+export const logError = (error: ErrorType) =>
+  // eslint-disable-next-line
+  console.error(JSON.stringify(error, null, 2))
+
+export const onLoadStart = async (
+  url: string,
+  authState: string,
+  onSuccess: Function,
+  onError: Function,
+  close: Function,
+  getAccessToken: (token: string) => Promise<LinkedInToken | {}>,
+) => {
+  if (isErrorUrl(url)) {
+    const err = getErrorFromUrl(url)
+    close()
+    onError(transformError(err))
+  } else {
+    const { code, state } = getCodeAndStateFromUrl(url)
+    if (state !== authState) {
+      onError({
+        type: 'state_not_match',
+        message: `state is not the same ${state}`,
+      })
+    } else {
+      const token: LinkedInToken | {} = await getAccessToken(code)
+      onSuccess(token)
+    }
+  }
+}
+
 const styles = StyleSheet.create({
   constainer: {
     flex: 1,
@@ -177,9 +207,7 @@ export default class LinkedInModal extends React.Component {
     animationType: Modal.propTypes.animationType,
   }
   static defaultProps = {
-    onError: (error: ErrorType) =>
-      // eslint-disable-next-line
-      console.error(JSON.stringify(error, null, 2)),
+    onError: logError,
     permissions: ['r_basicprofile', 'r_emailaddress'],
     authState: v4(),
     linkText: 'Login with LinkedIn',
@@ -198,24 +226,9 @@ export default class LinkedInModal extends React.Component {
     const { redirectUri, onError } = this.props
 
     if (url.includes(redirectUri) && !raceCondition) {
+      const { authState, onSuccess } = this.props
       this.setState({ modalVisible: false, raceCondition: true })
-      if (isErrorUrl(url)) {
-        const err = getErrorFromUrl(url)
-        this.close()
-        onError(transformError(err))
-      } else {
-        const { authState, onSuccess } = this.props
-        const { code, state } = getCodeAndStateFromUrl(url)
-        if (state !== authState) {
-          onError({
-            type: 'state_not_match',
-            message: `state is not the same ${state}`,
-          })
-        } else {
-          const token: LinkedInToken | {} = await this.getAccessToken(code)
-          onSuccess(token)
-        }
-      }
+      await onLoadStart(url, authState, onSuccess, onError)
     }
   }
 
@@ -280,7 +293,12 @@ export default class LinkedInModal extends React.Component {
         <TouchableOpacity onPress={this.open}>
           {this.renderButton()}
         </TouchableOpacity>
-        <Modal animationType={animationType} transparent visible={modalVisible}>
+        <Modal
+          animationType={animationType}
+          transparent
+          visible={modalVisible}
+          onRequestClose={() => {}}
+        >
           <View style={[styles.constainer, containerStyle]}>
             <View style={[styles.wrapper, wrapperStyle]}>
               <WebView
