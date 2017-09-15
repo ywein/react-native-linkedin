@@ -12,6 +12,7 @@ import LinkedInModal, {
   injectedJavaScript,
   fetchToken,
   logError,
+  onLoadStart,
 } from '../'
 
 jest.mock('WebView', () => 'WebView')
@@ -137,4 +138,45 @@ it('fetchToken', async () => {
 
 it('logError', async () => {
   logError({ type: 'test_error', message: 'test error' })
+})
+
+it('onLoadStart error', async () => {
+  await onLoadStart(
+    'http://url.com?error=error',
+    '',
+    () => {},
+    error => expect(error).toEqual({ type: 'error', message: '' }),
+    () => {},
+    () => new Promise(resolve => resolve('')),
+  )
+})
+
+it('onLoadStart success', async () => {
+  await onLoadStart(
+    'http://url.com?access_token=access_token&expires_in=123',
+    '',
+    success =>
+      expect(success).toEqual({
+        access_token: 'access_token',
+        expires_in: '123',
+      }),
+    () => {},
+    () => {},
+    () => new Promise(resolve => resolve('')),
+  )
+})
+
+it('onLoadStart error code & state', async () => {
+  await onLoadStart(
+    'http://url.com?access_token=access_token&expires_in=123&state=123',
+    '456',
+    () => {},
+    error =>
+      expect(error).toEqual({
+        type: 'state_not_match',
+        message: 'state is not the same 123',
+      }),
+    () => {},
+    () => new Promise(resolve => resolve('')),
+  )
 })
