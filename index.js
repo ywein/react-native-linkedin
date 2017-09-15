@@ -222,7 +222,7 @@ export default class LinkedInModal extends React.Component {
     authState: v4(),
   }
 
-  componentWillUpdate(nextProps, nextState) {
+  componentWillUpdate(nextProps: Props, nextState: State) {
     if (
       nextState.modalVisible !== this.state.modalVisible &&
       nextState.modalVisible === true
@@ -240,7 +240,14 @@ export default class LinkedInModal extends React.Component {
       const { onSuccess } = this.props
       const { authState } = this.state
       this.setState({ modalVisible: false, raceCondition: true })
-      await onLoadStart(url, authState, onSuccess, onError)
+      await onLoadStart(
+        url,
+        authState,
+        onSuccess,
+        onError,
+        this.close,
+        this.getAccessToken,
+      )
     }
   }
 
