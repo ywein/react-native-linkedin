@@ -2838,9 +2838,9 @@ react-native-branch@2.0.0-beta.3:
   dependencies:
     eventemitter3 "^2.0.2"
 
-react-native-linkedin@1.0.31:
-  version "1.0.31"
-  resolved "https://registry.yarnpkg.com/react-native-linkedin/-/react-native-linkedin-1.0.31.tgz#f9b20501e22b356bd412385e932a03b5325820ac"
+react-native-linkedin@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-linkedin/-/react-native-linkedin-1.1.0.tgz#9fc7b2ab8a6a9a5d4d69e64f8c3ee32a4cda813e"
   dependencies:
     query-string "^5.0.0"
     ramda "^0.24.1"
