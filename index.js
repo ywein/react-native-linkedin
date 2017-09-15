@@ -38,6 +38,7 @@ export type ErrorType = {
 type State = {
   raceCondition: boolean,
   modalVisible: boolean,
+  authState: string,
 }
 
 /* eslint-disable */
@@ -209,7 +210,6 @@ export default class LinkedInModal extends React.Component {
   static defaultProps = {
     onError: logError,
     permissions: ['r_basicprofile', 'r_emailaddress'],
-    authState: v4(),
     linkText: 'Login with LinkedIn',
     animationType: 'fade',
     containerStyle: StyleSheet.create({}),
@@ -219,6 +219,17 @@ export default class LinkedInModal extends React.Component {
   state: State = {
     raceCondition: false,
     modalVisible: false,
+    authState: v4(),
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    if (
+      nextState.modalVisible !== this.state.modalVisible &&
+      nextState.modalVisible === true
+    ) {
+      const authState = nextProps.authState || v4()
+      this.setState({ raceCondition: false, authState })
+    }
   }
 
   onLoadStart = async ({ nativeEvent: { url } }: Object) => {
@@ -226,13 +237,15 @@ export default class LinkedInModal extends React.Component {
     const { redirectUri, onError } = this.props
 
     if (url.includes(redirectUri) && !raceCondition) {
-      const { authState, onSuccess } = this.props
+      const { onSuccess } = this.props
+      const { authState } = this.state
       this.setState({ modalVisible: false, raceCondition: true })
       await onLoadStart(url, authState, onSuccess, onError)
     }
   }
 
-  getAuthorizationUrl: void => string = () => getAuthorizationUrl(this.props)
+  getAuthorizationUrl: void => string = () =>
+    getAuthorizationUrl({ ...this.props, authState: this.state.authState })
 
   getAccessToken: string => Promise<LinkedInToken | {}> = async (
     code: string,
@@ -264,11 +277,7 @@ export default class LinkedInModal extends React.Component {
   renderButton = () => {
     const { renderButton, linkText } = this.props
     if (renderButton) return renderButton()
-    return (
-      <Text>
-        {linkText}
-      </Text>
-    )
+    return <Text>{linkText}</Text>
   }
 
   renderClose = () => {
@@ -277,6 +286,22 @@ export default class LinkedInModal extends React.Component {
     return (
       // $DisableFlow
       <Image source={require('./assets/x-white.png')} resizeMode="contain" />
+    )
+  }
+
+  renderWebview = () => {
+    const { modalVisible } = this.state
+    if (!modalVisible) return null
+
+    return (
+      <WebView
+        source={{ uri: this.getAuthorizationUrl() }}
+        onLoadStart={this.onLoadStart}
+        startInLoadingState
+        javaScriptEnabled
+        domStorageEnabled
+        injectedJavaScript={injectedJavaScript()}
+      />
     )
   }
 
@@ -297,18 +322,11 @@ export default class LinkedInModal extends React.Component {
           animationType={animationType}
           transparent
           visible={modalVisible}
-          onRequestClose={() => {}}
+          onRequestClose={this.close}
         >
           <View style={[styles.constainer, containerStyle]}>
             <View style={[styles.wrapper, wrapperStyle]}>
-              <WebView
-                source={{ uri: this.getAuthorizationUrl() }}
-                onLoadStart={this.onLoadStart}
-                startInLoadingState
-                javaScriptEnabled
-                domStorageEnabled
-                injectedJavaScript={injectedJavaScript()}
-              />
+              {this.renderWebview()}
             </View>
             <TouchableOpacity
               onPress={this.close}
