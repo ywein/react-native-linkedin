@@ -228,7 +228,7 @@ export default class LinkedInModal extends React.Component {
       nextState.modalVisible === true
     ) {
       const authState = nextProps.authState || v4()
-      this.setState({ raceCondition: false, authState })
+      this.setState(() => ({ raceCondition: false, authState }))
     }
   }
 
