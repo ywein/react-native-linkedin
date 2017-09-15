@@ -38,6 +38,7 @@ exports[`<LinkedInModal /> render correctly 1`] = `
   <Modal
     animationType="fade"
     hardwareAccelerated={false}
+    onRequestClose={[Function]}
     transparent={true}
     visible={false}
   >
