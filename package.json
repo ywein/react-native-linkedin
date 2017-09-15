@@ -43,7 +43,7 @@
     "eslint-plugin-jsx-a11y": "2.2.3",
     "eslint-plugin-react": "7.2.0",
     "eslint-plugin-react-native": "2.0.0",
-    "flow-bin": "^0.52.0",
+    "flow-bin": "^0.54.1",
     "husky": "^0.14.3",
     "jest": "^21.1.0",
     "jest-junit-reporter": "^1.1.0",
