@@ -1,6 +1,13 @@
 // @flow
 import React from 'react'
-import { StyleSheet, View, Dimensions, Text, Clipboard } from 'react-native'
+import {
+  StyleSheet,
+  View,
+  Dimensions,
+  Text,
+  Clipboard,
+  Button,
+} from 'react-native'
 
 import LinkedInModal from 'react-native-linkedin'
 
@@ -23,6 +30,9 @@ export default class AppContainer extends React.Component {
     return (
       <View style={styles.container}>
         <LinkedInModal
+          ref={ref => {
+            this.modal = ref
+          }}
           clientID="86vrfyx76mucrq"
           clientSecret="as8w6lkXydkY94Is"
           redirectUri="https://xaviercarpentier.com"
@@ -39,6 +49,7 @@ export default class AppContainer extends React.Component {
             {'\n'}
           </Text>
         )}
+        <Button title="Open from external" onPress={() => this.modal.open()} />
       </View>
     )
   }
