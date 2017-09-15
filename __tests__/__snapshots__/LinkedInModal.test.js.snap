@@ -67,20 +67,7 @@ exports[`<LinkedInModal /> render correctly 1`] = `
             Object {},
           ]
         }
-      >
-        <WebView
-          domStorageEnabled={true}
-          injectedJavaScript="document.querySelector(\\"input[type=text]\\").setAttribute(\\"autocapitalize\\", \\"off\\")"
-          javaScriptEnabled={true}
-          onLoadStart={[Function]}
-          source={
-            Object {
-              "uri": "https://www.linkedin.com/uas/oauth2/authorization?client_id=clientID&redirect_uri=https%3A%2F%2Fxaviercarpentier.fr&response_type=code&scope=r_basicprofile%20r_emailaddress&state=authState",
-            }
-          }
-          startInLoadingState={true}
-        />
-      </View>
+      />
       <View
         accessibilityComponentType={undefined}
         accessibilityLabel={undefined}
