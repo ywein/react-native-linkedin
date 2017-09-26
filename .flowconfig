@@ -36,6 +36,8 @@
 .*/node_modules/sentry-expo/.*
 .*/node_modules/jest-resolve/.*
 .*/node_modules/metro-bundler/.*
+.*/node_modules/prop-types/node_modules/.*
+.*/node_modules/react/.*
 .*/example/.*
 
 .*/coverage/.*
