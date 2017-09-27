@@ -98,6 +98,7 @@ You should be aware that key can be found if you store it directly to your code.
 - [x] Publish example to expo
 - [ ] Test every line of code
 - [ ] Add props or other function to fetch more informations like basic profile information
+- [ ] Use Expo WebBrowser when app is in Expo
 
 
 [> Propose](https://github.com/xcarpentier/react-native-linkedin/issues/new)
