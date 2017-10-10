@@ -31,7 +31,7 @@
   "keywords": ["react-native", "react-native-linkedin", "linkedin"],
   "dependencies": {
     "query-string": "^5.0.0",
-    "ramda": "^0.24.1",
+    "ramda": "^0.25.0",
     "uuid": "^3.1.0"
   },
   "devDependencies": {
