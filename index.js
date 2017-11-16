@@ -51,6 +51,7 @@ type Props = {
   authState?: string,
   onOpen?: void => void,
   onClose?: void => void,
+  onSignIn?: void => void,
   permissions: Array<string>,
   linkText?: string,
   renderButton?: void => any,
@@ -199,6 +200,7 @@ export default class LinkedInModal extends React.Component {
     onError: PropTypes.func,
     onOpen: PropTypes.func,
     onClose: PropTypes.func,
+    onSignIn: PropTypes.func,
     linkText: PropTypes.string,
     renderButton: PropTypes.func,
     renderClose: PropTypes.func,
@@ -237,9 +239,10 @@ export default class LinkedInModal extends React.Component {
     const { redirectUri, onError } = this.props
 
     if (url.includes(redirectUri) && !raceCondition) {
-      const { onSuccess } = this.props
+      const { onSignIn, onSuccess } = this.props
       const { authState } = this.state
       this.setState({ modalVisible: false, raceCondition: true })
+      if (onSignIn) onSignIn()
       await onLoadStart(
         url,
         authState,

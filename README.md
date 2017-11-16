@@ -41,6 +41,7 @@ $ npm i react-native-linkedin --save
 | onError | function | optional | `console.error(err)` | Function  will be call back on error |
 | onClose | function | optional | | Function  will be call back on close modal |
 | onOpen | function | optional | | Function  will be call back on open modal |
+| onSignIn | function | optional | | Function  will be call back when the user sign in |
 | permissions | array | optional | `['r_basicprofile', 'r_emailaddress']` | The LinkedIn access token permissions |
 | renderButton | function | optional | | Render function for customize LinkedIn button  |
 | renderClose | function | optional | | Render function for customize close button  |
