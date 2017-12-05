@@ -113,8 +113,24 @@ You should be aware that key can be found if you store it directly to your code.
 ## FAQ
 ### Is it supported and tested both on android and iOS?
 **YES**
+### How to get the basic profile of a user after getting the token?
+```javascript
+const baseApi = 'https://api.linkedin.com/v1/people/'
+      const params = [
+        'first-name',
+        'last-name',
+      ]
+      const qs = {
+        format: 'json',
+        oauth2_access_token: access_token,
+      }
 
-## Questions
+      const response = await fetch(
+        `${baseApi}~:(${params.join(',')})?${querystring.stringify(qs)}`,
+      )
+      const payload = await response.json()
+```
+## Other questions
 Feel free to [contact me](mailto:contact@xaviercarpentier.com) or [create an issue](https://github.com/xcarpentier/react-native-linkedin/issues/new)
 
 ## Alternatives
