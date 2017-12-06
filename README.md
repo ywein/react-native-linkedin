@@ -115,18 +115,23 @@ You should be aware that key can be found if you store it directly to your code.
 **YES**
 ### How to get the basic profile of a user after getting the token?
 ```javascript
+const access_token // from this lib
 const baseApi = 'https://api.linkedin.com/v1/people/'
 const params = [
   'first-name',
   'last-name',
+  // add more fields here
 ]
-const qs = {
-  format: 'json',
-  oauth2_access_token: access_token,
-}
+const qs = { format: 'json' }
 
 const response = await fetch(
   `${baseApi}~:(${params.join(',')})?${querystring.stringify(qs)}`,
+  {
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + access_token
+    }
+  }
 )
 const payload = await response.json()
 ```
