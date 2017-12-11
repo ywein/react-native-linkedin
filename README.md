@@ -50,6 +50,7 @@ $ npm i react-native-linkedin --save
 | wrapperStyle | ViewPropTypes.style | optional | | Customize wrapper style |
 | closeStyle | ViewPropTypes.style | optional | | Customize close style |
 | animationType | Modal.propTypes.animationType | optional | `fade` | Customize animationType style: 'none', 'slide' or 'fade' |
+| shouldGetAccessToken | bool | optional | `true` | Set to false to receive the 'authorization code' rather then the 'access token'
 
 ### Example
 ```JavaScript
