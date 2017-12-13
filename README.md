@@ -36,13 +36,6 @@ Simple **LinkedIn** login library for **React-Native** with _WebView_ into a _Mo
 ```bash
 $ yarn add react-native-linkedin
 ```
-
-or
-
-```bash
-$ npm i react-native-linkedin --save
-```
-
 ## Documentation
 
 ### Props
