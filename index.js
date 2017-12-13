@@ -20,10 +20,8 @@ import { pipe, evolve, propSatisfies, applySpec, propOr } from 'ramda'
 import { v4 } from 'uuid'
 import querystring from 'query-string'
 
-const AUTHORIZATION_URL: string =
-  'https://www.linkedin.com/uas/oauth2/authorization'
-const ACCESS_TOKEN_URL: string =
-  'https://www.linkedin.com/uas/oauth2/accessToken'
+const AUTHORIZATION_URL: string = 'https://www.linkedin.com/uas/oauth2/authorization'
+const ACCESS_TOKEN_URL: string = 'https://www.linkedin.com/uas/oauth2/accessToken'
 
 export type LinkedInToken = {
   access_token?: string,
@@ -60,6 +58,7 @@ type Props = {
   wrapperStyle?: any,
   closeStyle?: any,
   animationType?: 'none' | 'fade' | 'slide',
+  shouldGetAccessToken: boolean,
 }
 /* eslint-enable */
 
@@ -117,8 +116,7 @@ export const getPayloadForToken: (Props & { code: string }) => string = ({
   })
 
 export const injectedJavaScript = () =>
-  'document.querySelector("input[type=text]")' +
-  '.setAttribute("autocapitalize", "off")'
+  'document.querySelector("input[type=text]").setAttribute("autocapitalize", "off")'
 
 export const fetchToken: string => Promise<LinkedInToken> = async payload => {
   const response = await fetch(ACCESS_TOKEN_URL, {
@@ -142,6 +140,7 @@ export const onLoadStart = async (
   onError: Function,
   close: Function,
   getAccessToken: (token: string) => Promise<LinkedInToken | {}>,
+  shouldGetAccessToken: boolean,
 ) => {
   if (isErrorUrl(url)) {
     const err = getErrorFromUrl(url)
@@ -150,18 +149,16 @@ export const onLoadStart = async (
   } else {
     const { code, state } = getCodeAndStateFromUrl(url)
     if (!shouldGetAccessToken) {
-      onSuccess(code);
+      onSuccess(code)
+    } else if (state !== authState) {
+      onError({
+        type: 'state_not_match',
+        message: `state is not the same ${state}`,
+      })
     } else {
-        if (state !== authState) {
-          onError({
-            type: 'state_not_match',
-            message: `state is not the same ${state}`,
-          })
-        } else {
-          const token: LinkedInToken | {} = await getAccessToken(code)
-          onSuccess(token)
-        }
-      }
+      const token: LinkedInToken | {} = await getAccessToken(code)
+      onSuccess(token)
+    }
   }
 }
 
@@ -212,7 +209,7 @@ export default class LinkedInModal extends React.Component {
     wrapperStyle: ViewPropTypes.style,
     closeStyle: ViewPropTypes.style,
     animationType: Modal.propTypes.animationType,
-    shouldGetAccessToken: PropTypes.bool
+    shouldGetAccessToken: PropTypes.bool,
   }
   static defaultProps = {
     onError: logError,
@@ -222,7 +219,7 @@ export default class LinkedInModal extends React.Component {
     containerStyle: StyleSheet.create({}),
     wrapperStyle: StyleSheet.create({}),
     closeStyle: StyleSheet.create({}),
-    shouldGetAccessToken: true
+    shouldGetAccessToken: true,
   }
   state: State = {
     raceCondition: false,
@@ -231,10 +228,7 @@ export default class LinkedInModal extends React.Component {
   }
 
   componentWillUpdate(nextProps: Props, nextState: State) {
-    if (
-      nextState.modalVisible !== this.state.modalVisible &&
-      nextState.modalVisible === true
-    ) {
+    if (nextState.modalVisible !== this.state.modalVisible && nextState.modalVisible === true) {
       const authState = nextProps.authState || v4()
       this.setState(() => ({ raceCondition: false, authState }))
     }
@@ -251,12 +245,12 @@ export default class LinkedInModal extends React.Component {
       if (onSignIn) onSignIn()
       await onLoadStart(
         url,
-        shouldGetAccessToken,
         authState,
         onSuccess,
         onError,
         this.close,
         this.getAccessToken,
+        shouldGetAccessToken,
       )
     }
   }
@@ -264,9 +258,7 @@ export default class LinkedInModal extends React.Component {
   getAuthorizationUrl: void => string = () =>
     getAuthorizationUrl({ ...this.props, authState: this.state.authState })
 
-  getAccessToken: string => Promise<LinkedInToken | {}> = async (
-    code: string,
-  ) => {
+  getAccessToken: string => Promise<LinkedInToken | {}> = async (code: string) => {
     const { onError } = this.props
     const payload: string = getPayloadForToken({ ...this.props, code })
     const token = await fetchToken(payload)
@@ -324,17 +316,10 @@ export default class LinkedInModal extends React.Component {
 
   render() {
     const { modalVisible } = this.state
-    const {
-      animationType,
-      containerStyle,
-      wrapperStyle,
-      closeStyle,
-    } = this.props
+    const { animationType, containerStyle, wrapperStyle, closeStyle } = this.props
     return (
       <View>
-        <TouchableOpacity onPress={this.open}>
-          {this.renderButton()}
-        </TouchableOpacity>
+        <TouchableOpacity onPress={this.open}>{this.renderButton()}</TouchableOpacity>
         <Modal
           animationType={animationType}
           transparent
@@ -342,13 +327,8 @@ export default class LinkedInModal extends React.Component {
           onRequestClose={this.close}
         >
           <View style={[styles.constainer, containerStyle]}>
-            <View style={[styles.wrapper, wrapperStyle]}>
-              {this.renderWebview()}
-            </View>
-            <TouchableOpacity
-              onPress={this.close}
-              style={[styles.close, closeStyle]}
-            >
+            <View style={[styles.wrapper, wrapperStyle]}>{this.renderWebview()}</View>
+            <TouchableOpacity onPress={this.close} style={[styles.close, closeStyle]}>
               {this.renderClose()}
             </TouchableOpacity>
           </View>

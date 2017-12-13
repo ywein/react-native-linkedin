@@ -46,34 +46,26 @@ it('<LinkedInModal /> render correctly', () => {
 })
 
 it('cleanUrlString', () => {
-  expect(cleanUrlString('https://xaviercarpentier.com#!')).toBe(
-    'https://xaviercarpentier.com',
-  )
-  expect(cleanUrlString('https://xaviercarpentier.com')).toBe(
-    'https://xaviercarpentier.com',
-  )
+  expect(cleanUrlString('https://xaviercarpentier.com#!')).toBe('https://xaviercarpentier.com')
+  expect(cleanUrlString('https://xaviercarpentier.com')).toBe('https://xaviercarpentier.com')
 })
 
 it('getCodeAndStateFromUrl', () => {
-  expect(
-    getCodeAndStateFromUrl('https://xaviercarpentier.com?code=code&state=1234'),
-  ).toMatchObject({ code: 'code', state: '1234' })
+  expect(getCodeAndStateFromUrl('https://xaviercarpentier.com?code=code&state=1234')).toMatchObject(
+    { code: 'code', state: '1234' },
+  )
 })
 
 it('isErrorUrl', () => {
   expect(
-    isErrorUrl(
-      'https://xaviercarpentier.com?' +
-        'error=error&error_description=error_description',
-    ),
+    isErrorUrl('https://xaviercarpentier.com?' + 'error=error&error_description=error_description'),
   ).toBe(true)
 })
 
 it('getErrorFromUrl', () => {
   expect(
     getErrorFromUrl(
-      'https://xaviercarpentier.com?' +
-        'error=error&error_description=error_description',
+      'https://xaviercarpentier.com?' + 'error=error&error_description=error_description',
     ),
   ).toMatchObject({ error: 'error', error_description: 'error_description' })
 })
@@ -123,8 +115,7 @@ it('getPayloadForToken', () => {
 
 it('injectedJavaScript', () => {
   expect(injectedJavaScript()).toBe(
-    'document.querySelector("input[type=text]")' +
-      '.setAttribute("autocapitalize", "off")',
+    'document.querySelector("input[type=text]")' + '.setAttribute("autocapitalize", "off")',
   )
 })
 
@@ -163,6 +154,7 @@ it('onLoadStart success', async () => {
     () => {},
     () => {},
     () => new Promise(resolve => resolve('')),
+    true,
   )
 })
 
