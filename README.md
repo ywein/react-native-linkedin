@@ -49,25 +49,26 @@ $ npm i react-native-linkedin --save
 
 ### Props
 
-| Name           | Type                          | Required     | Default                                | Description                                                   |
-| -------------- | ----------------------------- | ------------ | -------------------------------------- | ------------------------------------------------------------- |
-| clientID       | string                        | **required** |                                        | [Your client id](https://www.linkedin.com/developer/apps)     |
-| clientSecret   | string                        | **required** |                                        | [Your client secret](https://www.linkedin.com/developer/apps) |
-| redirectUri    | string                        | **required** |                                        | [Your redirectUri](https://www.linkedin.com/developer/apps)   |
-| onSuccess      | function                      | **required** |                                        | Function will be call back on success                         |
-| authState      | string                        | optional     | `require('uuid').v4()`                 | The state of auth, to be more secure                          |
-| onError        | function                      | optional     | `console.error(err)`                   | Function will be call back on error                           |
-| onClose        | function                      | optional     |                                        | Function will be call back on close modal                     |
-| onOpen         | function                      | optional     |                                        | Function will be call back on open modal                      |
-| onSignIn       | function                      | optional     |                                        | Function will be call back when the user sign in              |
-| permissions    | array                         | optional     | `['r_basicprofile', 'r_emailaddress']` | The LinkedIn access token permissions                         |
-| renderButton   | function                      | optional     |                                        | Render function for customize LinkedIn button                 |
-| renderClose    | function                      | optional     |                                        | Render function for customize close button                    |
-| linkText       | string                        | optional     | `'Login with LinkedIn'`                | Link label                                                    |
-| containerStyle | ViewPropTypes.style           | optional     |                                        | Customize container style                                     |
-| wrapperStyle   | ViewPropTypes.style           | optional     |                                        | Customize wrapper style                                       |
-| closeStyle     | ViewPropTypes.style           | optional     |                                        | Customize close style                                         |
-| animationType  | Modal.propTypes.animationType | optional     | `fade`                                 | Customize animationType style: 'none', 'slide' or 'fade'      |
+| Name                 | Type                          | Required     | Default                                | Description                                                                     |
+| -------------------- | ----------------------------- | ------------ | -------------------------------------- | ------------------------------------------------------------------------------- |
+| clientID             | string                        | **required** |                                        | [Your client id](https://www.linkedin.com/developer/apps)                       |
+| clientSecret         | string                        | **required** |                                        | [Your client secret](https://www.linkedin.com/developer/apps)                   |
+| redirectUri          | string                        | **required** |                                        | [Your redirectUri](https://www.linkedin.com/developer/apps)                     |
+| onSuccess            | function                      | **required** |                                        | Function will be call back on success                                           |
+| authState            | string                        | optional     | `require('uuid').v4()`                 | The state of auth, to be more secure                                            |
+| onError              | function                      | optional     | `console.error(err)`                   | Function will be call back on error                                             |
+| onClose              | function                      | optional     |                                        | Function will be call back on close modal                                       |
+| onOpen               | function                      | optional     |                                        | Function will be call back on open modal                                        |
+| onSignIn             | function                      | optional     |                                        | Function will be call back when the user sign in                                |
+| permissions          | array                         | optional     | `['r_basicprofile', 'r_emailaddress']` | The LinkedIn access token permissions                                           |
+| renderButton         | function                      | optional     |                                        | Render function for customize LinkedIn button                                   |
+| renderClose          | function                      | optional     |                                        | Render function for customize close button                                      |
+| linkText             | string                        | optional     | `'Login with LinkedIn'`                | Link label                                                                      |
+| containerStyle       | ViewPropTypes.style           | optional     |                                        | Customize container style                                                       |
+| wrapperStyle         | ViewPropTypes.style           | optional     |                                        | Customize wrapper style                                                         |
+| closeStyle           | ViewPropTypes.style           | optional     |                                        | Customize close style                                                           |
+| animationType        | Modal.propTypes.animationType | optional     | `fade`                                 | Customize animationType style: 'none', 'slide' or 'fade'                        |
+| shouldGetAccessToken | bool                          | optional     | `true`                                 | Set to false to receive the 'authorization code' rather then the 'access token' |
 
 ### Example
 

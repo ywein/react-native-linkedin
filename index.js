@@ -149,15 +149,19 @@ export const onLoadStart = async (
     onError(transformError(err))
   } else {
     const { code, state } = getCodeAndStateFromUrl(url)
-    if (state !== authState) {
-      onError({
-        type: 'state_not_match',
-        message: `state is not the same ${state}`,
-      })
+    if (!shouldGetAccessToken) {
+      onSuccess(code);
     } else {
-      const token: LinkedInToken | {} = await getAccessToken(code)
-      onSuccess(token)
-    }
+        if (state !== authState) {
+          onError({
+            type: 'state_not_match',
+            message: `state is not the same ${state}`,
+          })
+        } else {
+          const token: LinkedInToken | {} = await getAccessToken(code)
+          onSuccess(token)
+        }
+      }
   }
 }
 
@@ -208,6 +212,7 @@ export default class LinkedInModal extends React.Component {
     wrapperStyle: ViewPropTypes.style,
     closeStyle: ViewPropTypes.style,
     animationType: Modal.propTypes.animationType,
+    shouldGetAccessToken: PropTypes.bool
   }
   static defaultProps = {
     onError: logError,
@@ -217,6 +222,7 @@ export default class LinkedInModal extends React.Component {
     containerStyle: StyleSheet.create({}),
     wrapperStyle: StyleSheet.create({}),
     closeStyle: StyleSheet.create({}),
+    shouldGetAccessToken: true
   }
   state: State = {
     raceCondition: false,
@@ -236,7 +242,7 @@ export default class LinkedInModal extends React.Component {
 
   onLoadStart = async ({ nativeEvent: { url } }: Object) => {
     const { raceCondition } = this.state
-    const { redirectUri, onError } = this.props
+    const { redirectUri, onError, shouldGetAccessToken } = this.props
 
     if (url.includes(redirectUri) && !raceCondition) {
       const { onSignIn, onSuccess } = this.props
@@ -245,6 +251,7 @@ export default class LinkedInModal extends React.Component {
       if (onSignIn) onSignIn()
       await onLoadStart(
         url,
+        shouldGetAccessToken,
         authState,
         onSuccess,
         onError,
