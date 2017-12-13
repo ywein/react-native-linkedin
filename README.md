@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="react-native-linkedin" src="https://media.giphy.com/media/l4FGCGPtBn9meI7Pa/giphy.gif" width=150>
+    <img alt="react-native-linkedin" src="https://media.giphy.com/media/l4FGCGPtBn9meI7Pa/giphy.gif" width=200>
 </p>
 
 <h3 align="center">
