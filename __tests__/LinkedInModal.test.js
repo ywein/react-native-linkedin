@@ -58,15 +58,13 @@ it('getCodeAndStateFromUrl', () => {
 
 it('isErrorUrl', () => {
   expect(
-    isErrorUrl('https://xaviercarpentier.com?' + 'error=error&error_description=error_description'),
+    isErrorUrl('https://xaviercarpentier.com?error=error&error_description=error_description'),
   ).toBe(true)
 })
 
 it('getErrorFromUrl', () => {
   expect(
-    getErrorFromUrl(
-      'https://xaviercarpentier.com?' + 'error=error&error_description=error_description',
-    ),
+    getErrorFromUrl('https://xaviercarpentier.com?error=error&error_description=error_description'),
   ).toMatchObject({ error: 'error', error_description: 'error_description' })
 })
 
@@ -115,7 +113,7 @@ it('getPayloadForToken', () => {
 
 it('injectedJavaScript', () => {
   expect(injectedJavaScript()).toBe(
-    'document.querySelector("input[type=text]")' + '.setAttribute("autocapitalize", "off")',
+    'document.querySelector("input[type=text]").setAttribute("autocapitalize", "off")',
   )
 })
 
