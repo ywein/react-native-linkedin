@@ -15,9 +15,7 @@
 </p>
 
 <p align="center">
-  <a href="https://codecov.io/gh/xcarpentier/react-native-linkedin">
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://exp.host/@xcarpentier/linked-in-login-example">
-  </a>
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://exp.host/@xcarpentier/linked-in-login-example">
   <br>
   <a href="https://exp.host/@xcarpentier/linked-in-login-example">Demo on Expo</a>
 </p>
