@@ -1,6 +1,6 @@
 {
   "name": "react-native-linkedin",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "main": "index.js",
   "files": ["assets/x-white@2x.png", "assets/x-white@3x.png"],
   "description":
