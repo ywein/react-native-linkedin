@@ -5,7 +5,9 @@
 <h3 align="center">
   🔗 React-Native LinkedIn
 </h3>
-
+<p align="center">
+Simple <strong>LinkedIn</strong> login library for <strong>React-Native</strong> with <i>WebView</i> into a <i>Modal</i>
+</p>
 <p align="center">
   <a href="https://www.npmjs.com/package/react-native-linkedin"><img src="https://img.shields.io/npm/v/react-native-linkedin.svg?style=flat-square"></a>
   <a href="https://www.npmjs.com/package/react-native-linkedin"><img src="https://img.shields.io/npm/dm/react-native-linkedin.svg?style=flat-square"></a>
@@ -22,7 +24,7 @@
 
 <br />
 
-Simple **LinkedIn** login library for **React-Native** with _WebView_ into a _Modal_
+
 
 ## Benefits
 
