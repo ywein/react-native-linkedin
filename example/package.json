@@ -15,8 +15,5 @@
       "https://github.com/expo/react-native/archive/sdk-24.0.0.tar.gz",
     "react-native-linkedin":
       "https://github.com/xcarpentier/react-native-linkedin.git"
-  },
-  "devDependencies": {
-    "react-native-dotenv": "0.1.0"
   }
 }
