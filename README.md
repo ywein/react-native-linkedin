@@ -12,6 +12,8 @@ Simple <strong>LinkedIn</strong> login library for <strong>React-Native</strong>
   <a href="https://www.npmjs.com/package/react-native-linkedin"><img src="https://badge.fury.io/js/react-native-linkedin.svg"></a>
   <a href="https://www.npmjs.com/package/react-native-linkedin"><img src="https://img.shields.io/npm/dm/react-native-linkedin.svg?style=flat-square"></a>
   <a href="https://circleci.com/gh/xcarpentier/react-native-linkedin"><img src="https://circleci.com/gh/xcarpentier/react-native-linkedin.svg?style=svg"></a>
+    <a href="https://travis-ci.org/xcarpentier/react-native-linkedin"><img src="https://travis-ci.org/xcarpentier/react-native-linkedin.svg?branch=master"></a>
+
   <a href="https://codecov.io/gh/xcarpentier/react-native-linkedin"><img src="https://codecov.io/gh/xcarpentier/react-native-linkedin/coverage.svg"></a>
   <a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/xcarpentier/react-native-linkedin.svg"></a>
 </p>
