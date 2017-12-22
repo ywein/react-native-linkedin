@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- node
+cache: yarn
+before_install:
+- npm install -g exp
+script:
+- yarn run lint
+- yarn run flow
+- yarn run test -- --coverage
+- yarn deploy
+sudo: false
