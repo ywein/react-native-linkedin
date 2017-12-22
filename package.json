@@ -19,7 +19,7 @@
     "lint": "eslint .",
     "flow": "./node_modules/flow-bin/cli.js",
     "deploy":
-      "cd example && yarn install && exp login --username $EXPO_USERNAME --password $EXPO_PASSWORD && exp publish --non-interactive",
+      "cd example && ./write_config_env.js && yarn install && exp login --username $EXPO_USERNAME --password $EXPO_PASSWORD && exp publish --non-interactive",
     "bump-patch":
       "NEW_VERSION=`./scripts/version_increment.js patch` && yarn version --new-version $NEW_VERSION && git push --follow-tags",
     "bump-minor":

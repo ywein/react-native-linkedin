@@ -60,3 +60,4 @@ typings/
 .vscode
 jsconfig.json
 test-report.xml
+env.json

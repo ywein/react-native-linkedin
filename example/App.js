@@ -12,7 +12,7 @@ import {
   StatusBar,
 } from 'react-native'
 
-import { CLIENT_ID, CLIENT_SECRET } from 'react-native-dotenv'
+import { CLIENT_ID, CLIENT_SECRET } from './config'
 
 import LinkedInModal from 'react-native-linkedin'
 
