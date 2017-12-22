@@ -7,6 +7,6 @@ before_install:
 script:
 - yarn run lint
 - yarn run flow
-- yarn run test -- --coverage
-- yarn deploy
+- yarn run test
+- yarn run deploy
 sudo: false
