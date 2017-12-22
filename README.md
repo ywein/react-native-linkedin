@@ -138,10 +138,9 @@ const params = [
   'last-name',
   // add more fields here
 ]
-const qs = { format: 'json' }
 
 const response = await fetch(
-  `${baseApi}~:(${params.join(',')})?${querystring.stringify(qs)}`,
+  `${baseApi}~:(${params.join(',')})?format=json`,
   {
     method: 'GET',
     headers: {
