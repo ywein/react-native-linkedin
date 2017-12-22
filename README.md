@@ -1,13 +1,15 @@
 <p align="center">
-    <img alt="react-native-linkedin" src="https://media.giphy.com/media/l4FGCGPtBn9meI7Pa/giphy.gif" width=200>
+    <img alt="react-native-linkedin" src="https://thumbs.gfycat.com/IlliterateSecondDassie-size_restricted.gif" width=250>
 </p>
 
 <h3 align="center">
   🔗 React-Native LinkedIn
 </h3>
-
 <p align="center">
-  <a href="https://www.npmjs.com/package/react-native-linkedin"><img src="https://img.shields.io/npm/v/react-native-linkedin.svg?style=flat-square"></a>
+Simple <strong>LinkedIn</strong> login library for <strong>React-Native</strong> with <i>WebView</i> into a <i>Modal</i>
+</p>
+<p align="center">
+  <a href="https://www.npmjs.com/package/react-native-linkedin"><img src="https://badge.fury.io/js/react-native-linkedin.svg"></a>
   <a href="https://www.npmjs.com/package/react-native-linkedin"><img src="https://img.shields.io/npm/dm/react-native-linkedin.svg?style=flat-square"></a>
   <a href="https://circleci.com/gh/xcarpentier/react-native-linkedin"><img src="https://circleci.com/gh/xcarpentier/react-native-linkedin.svg?style=svg"></a>
   <a href="https://codecov.io/gh/xcarpentier/react-native-linkedin"><img src="https://codecov.io/gh/xcarpentier/react-native-linkedin/coverage.svg"></a>
@@ -15,16 +17,14 @@
 </p>
 
 <p align="center">
-  <a href="https://codecov.io/gh/xcarpentier/react-native-linkedin">
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://exp.host/@xcarpentier/linked-in-login-example">
-  </a>
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://exp.host/@xcarpentier/linked-in-login-example">
   <br>
   <a href="https://exp.host/@xcarpentier/linked-in-login-example">Demo on Expo</a>
 </p>
 
 <br />
 
-Simple **LinkedIn** login library for **React-Native** with _WebView_ into a _Modal_
+
 
 ## Benefits
 
@@ -38,13 +38,6 @@ Simple **LinkedIn** login library for **React-Native** with _WebView_ into a _Mo
 ```bash
 $ yarn add react-native-linkedin
 ```
-
-or
-
-```bash
-$ npm i react-native-linkedin --save
-```
-
 ## Documentation
 
 ### Props
@@ -145,10 +138,9 @@ const params = [
   'last-name',
   // add more fields here
 ]
-const qs = { format: 'json' }
 
 const response = await fetch(
-  `${baseApi}~:(${params.join(',')})?${querystring.stringify(qs)}`,
+  `${baseApi}~:(${params.join(',')})?format=json`,
   {
     method: 'GET',
     headers: {
