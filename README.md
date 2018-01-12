@@ -104,6 +104,8 @@ Please note that you should give your linkedin client id and you secret key to t
 You should be aware that key can be found if you store it directly to your code.
 **I strongly recommand to not declare both on your code but found a way to keep it secret (ie. get it from server, encrypt it, ...)**
 
+[> Related issue](https://github.com/xcarpentier/react-native-linkedin/issues/59)
+
 ## Roadmap & TODOs
 
 * [x] Better style for modal: border, padding, transparency
