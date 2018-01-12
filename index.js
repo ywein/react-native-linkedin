@@ -42,7 +42,7 @@ type State = {
 /* eslint-disable */
 type Props = {
   clientID: string,
-  clientSecret: string,
+  clientSecret?: string,
   redirectUri: string,
   onSuccess: (LinkedInToken | {}) => void,
   onError: ErrorType => void,
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
 export default class LinkedInModal extends React.Component {
   static propTypes = {
     clientID: PropTypes.string.isRequired,
-    clientSecret: PropTypes.string.isRequired,
+    clientSecret: PropTypes.string,
     redirectUri: PropTypes.string.isRequired,
     permissions: PropTypes.array,
     authState: PropTypes.string,
