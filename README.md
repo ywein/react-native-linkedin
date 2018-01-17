@@ -48,7 +48,7 @@ $ yarn add react-native-linkedin
 | Name                 | Type                          | Required     | Default                                | Description                                                                     |
 | -------------------- | ----------------------------- | ------------ | -------------------------------------- | ------------------------------------------------------------------------------- |
 | clientID             | string                        | **required** |                                        | [Your client id](https://www.linkedin.com/developer/apps)                       |
-| clientSecret         | string                        |  |                                        | [Your client secret](https://www.linkedin.com/developer/apps)                   |
+| <s>clientSecret</s>         | string                        |  |                                        | Will be removed from here and give server example [Your client secret](https://www.linkedin.com/developer/apps)                   |
 | redirectUri          | string                        | **required** |                                        | [Your redirectUri](https://www.linkedin.com/developer/apps)                     |
 | onSuccess            | function                      | **required** |                                        | Function will be call back on success                                           |
 | authState            | string                        | optional     | `require('uuid').v4()`                 | The state of auth, to be more secure                                            |
@@ -115,6 +115,7 @@ You should be aware that key can be found if you store it directly to your code.
 * [x] Better catch of error into login url
 * [x] Add gif example in README
 * [x] Publish example to expo
+* [ ] Remove secret from client and give server example of retrieving `access_token`
 * [ ] Test every line of code
 * [ ] Add props or other function to fetch more informations like basic profile information
 * [ ] Use Expo WebBrowser when app is in Expo (ie. if `global.__exponent` exist)
