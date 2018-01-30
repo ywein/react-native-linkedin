@@ -20,8 +20,8 @@ import { pipe, evolve, propSatisfies, applySpec, propOr } from 'ramda'
 import { v4 } from 'uuid'
 import querystring from 'query-string'
 
-const AUTHORIZATION_URL: string = 'https://www.linkedin.com/uas/oauth2/authorization'
-const ACCESS_TOKEN_URL: string = 'https://www.linkedin.com/uas/oauth2/accessToken'
+const AUTHORIZATION_URL: string = 'https://www.linkedin.com/oauth/v2/authorization'
+const ACCESS_TOKEN_URL: string = 'https://www.linkedin.com/oauth/v2/accessToken'
 
 export type LinkedInToken = {
   access_token?: string,

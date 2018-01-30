@@ -89,7 +89,7 @@ it('getAuthorizationUrl', () => {
       redirectUri: 'https://xaviercarpentier.com',
     }),
   ).toBe(
-    'https://www.linkedin.com/uas/oauth2/authorization?' +
+    'https://www.linkedin.com/oauth/v2/authorization?' +
       'client_id=clientID&redirect_uri=https%3A%2F%2Fxaviercarpentier.com&' +
       'response_type=code&scope=r_basicprofile%20r_emailaddress&' +
       'state=authState',
