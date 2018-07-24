@@ -9,7 +9,7 @@
 Simple <strong>LinkedIn</strong> login library for <strong>React-Native</strong> with <i>WebView</i> into a <i>Modal</i>
 </p>
 <p align="center">
-  <a href="https://reactnative.gallery"><img src="https://img.shields.io/badge/reactnative.gallery-%E2%99%A5-red.svg"></a>
+  <a href="https://reactnative.gallery/xcarpentier/linkedin-connect"><img src="https://img.shields.io/badge/reactnative.gallery-%F0%9F%8E%AC-green.svg"></a>
   <a href="https://www.npmjs.com/package/react-native-linkedin"><img src="https://badge.fury.io/js/react-native-linkedin.svg"></a>
   <a href="https://www.npmjs.com/package/react-native-linkedin"><img src="https://img.shields.io/npm/dm/react-native-linkedin.svg?style=flat-square"></a>
     <a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/xcarpentier/react-native-linkedin.svg"></a>
