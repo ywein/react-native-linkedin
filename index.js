@@ -234,7 +234,7 @@ export default class LinkedInModal extends React.Component {
     }
   }
 
-  onLoadStart = async ({ nativeEvent: { url } }: Object) => {
+  onNavigationStateChange = async ({ url }: Object) => {
     const { raceCondition } = this.state
     const { redirectUri, onError, shouldGetAccessToken } = this.props
 
@@ -305,7 +305,7 @@ export default class LinkedInModal extends React.Component {
     return (
       <WebView
         source={{ uri: this.getAuthorizationUrl() }}
-        onLoadStart={this.onLoadStart}
+        onNavigationStateChange={this.onNavigationStateChange}
         startInLoadingState
         javaScriptEnabled
         domStorageEnabled
