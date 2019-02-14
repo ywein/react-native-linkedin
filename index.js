@@ -208,7 +208,7 @@ export default class LinkedInModal extends React.Component {
     containerStyle: ViewPropTypes.style,
     wrapperStyle: ViewPropTypes.style,
     closeStyle: ViewPropTypes.style,
-    animationType: Modal.propTypes.animationType,
+    animationType: PropTypes.string,
     shouldGetAccessToken: PropTypes.bool,
   }
   static defaultProps = {
